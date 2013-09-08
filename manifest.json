@@ -39,5 +39,25 @@
     "default_title": "Google Play Music",
     "default_popup": "popup.html"
   },
-  "options_page": "options.html"
+  "options_page": "options.html",
+  "commands": {
+    "next-song": {
+      "suggested_key": {
+        "default": "MediaNextTrack"
+      },	
+      "description": "Go to the next track"
+    },
+    "previous-song": {
+      "suggested_key": {
+        "default": "MediaPrevTrack"
+      },
+      "description": "Go to the previous track"
+    },
+    "play-pause": {
+      "suggested_key": {
+        "default": "MediaPlayPause"
+      },
+      "description": "Toggle Play/Pause"
+    }
+  }
 }

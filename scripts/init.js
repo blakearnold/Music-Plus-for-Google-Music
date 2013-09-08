@@ -115,8 +115,37 @@ function onRequest(request, sender, callback) {
     }
 }
 
-      // Wire up the listener.
-      chrome.extension.onRequest.addListener(onRequest);
+// Wire up the listener.
+chrome.extension.onRequest.addListener(onRequest);
+
+chrome.commands.onCommand.addListener(function(command) {
+	console.log('onCommand event received for message: ', command);
+	if (command == 'next-song') {
+      	var type = 'nextSong';
+		chrome.tabs.sendRequest(parseInt(localStorage["tabID"]), {'action' : 'playback_action', 'type' : type},
+			function(response) {
+				console.log('nextSong with response: ', command);
+			}
+		);
+    }
+    else if (command == 'previous-song') {
+      	var type = 'prevSong';
+		chrome.tabs.sendRequest(parseInt(localStorage["tabID"]), {'action' : 'playback_action', 'type' : type},
+			function(response) {
+				console.log('prevSong with response: ', command);
+			}
+		);
+    
+    }
+    else if (command == 'play-pause') {
+      	var type = 'playPause';
+		chrome.tabs.sendRequest(parseInt(localStorage["tabID"]), {'action' : 'playback_action', 'type' : type},
+			function(response) {
+				console.log('playPause with response: ', command);
+			}
+		);
+    }
+});
 
 $('body').ready(function() {
   history_listener();
